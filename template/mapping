@@ -1,0 +1,2 @@
+<grammar>   Grammar name and prefix for classes.
+<namespace> Namespace in which the scanner/parser should be created.
