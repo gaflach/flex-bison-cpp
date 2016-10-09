@@ -26,6 +26,7 @@ using token = <namespace>::<grammar>Parser::token;
 %option yyclass="<namespace>::<grammar>Scanner"
 %option noyywrap
 %option c++
+%option prefix="yy<grammar>"
 
 %x MULTI_LINE_COMMENT
 %x SINGLE_LINE_COMMENT
@@ -70,14 +71,21 @@ keyword2 { return token::KEYWORD2; }
 		return token::IDENTIFIER; 
 	}
 
- /* Numbers */
+ /* Integer */
  
-[0-9][0-9_]* {
+[0-9][0-9]* {
 		yylval->build<std::string>(yytext);
 		return token::INTEGER;
 	}
 
-[0-9][0-9_]*\.[0-9][0-9_]*([Ee][+-]?[0-9][0-9_]*)? {
+ /* Floating Point: +1e10, 1e5, -1e-3 */
+[+-]?[0-9]+([Ee][+-]?[0-9]+) {
+		yylval->build<std::string>(yytext);
+		return token::FLOAT;
+	}
+
+ /* Floating Point: +1.02e10, 1.003, -1e-3, .0 */
+[+-]?[0-9]*\.[0-9]+([Ee][+-]?[0-9]+)? {
 		yylval->build<std::string>(yytext);
 		return token::FLOAT;
 	}

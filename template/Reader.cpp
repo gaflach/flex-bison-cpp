@@ -3,6 +3,8 @@
 #include <cassert>
 
 #include "<grammar>Reader.h"
+#include "base/<grammar>.tab.hh"
+#include "<grammar>Scanner.h"
 
 namespace <namespace> {
 

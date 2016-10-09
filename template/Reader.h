@@ -7,10 +7,10 @@
 #include <istream>
 #include <sstream>
 
-#include "<grammar>Scanner.h"
-#include "base/<grammar>.tab.hh"
-
 namespace <namespace> {
+
+class <grammar>Scanner;
+class <grammar>Parser;
 
 class <grammar>Reader {
 friend class <grammar>Parser;

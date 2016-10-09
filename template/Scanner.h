@@ -1,12 +1,25 @@
 #ifndef <grammar>_SCANNER_H
 #define <grammar>_SCANNER_H
 
+/* From Flex documentation:
+ *   The c++ scanner is a mess. The FlexLexer.h header file relies on the
+ *   following macro. This is required in order to pass the c++-multiple-scanners
+ *   test in the regression suite. We get reports that it breaks inheritance.
+ *   We will address this in a future release of flex, or omit the C++ scanner
+ *   altogether.
+ *
+ * So, for now, let's define this variable too...
+ */
+ 
+#define yyFlexLexer yy<grammar>FlexLexer
+
 #if ! defined(yyFlexLexerOnce)
 #include <FlexLexer.h>
 #endif
 
+#undef yylex
+
 #include "base/<grammar>.tab.hh"
-#include "base/location.hh"
 
 namespace <namespace> {
 

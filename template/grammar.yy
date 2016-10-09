@@ -29,11 +29,11 @@
    #include <cstdlib>
    #include <fstream>
    
-   // Include listener.
    #include "../<grammar>Reader.h"
-
-#undef yylex
-#define yylex scanner.yylex
+   #include "../<grammar>Scanner.h"   
+ 
+   #undef yylex
+   #define yylex scanner.yylex
 }
 
 %define api.value.type variant
