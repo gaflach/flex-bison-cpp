@@ -8,7 +8,7 @@
  *   We will address this in a future release of flex, or omit the C++ scanner
  *   altogether.
  *
- * So, for now, let's define this variable too...
+ * So, for now, let's define this macro too...
  */
  
 #define yyFlexLexer yy<grammar>FlexLexer
